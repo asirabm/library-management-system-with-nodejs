@@ -6,6 +6,7 @@ if(process.env.NODE_ENV !=='production'){
 const express=require('express')
 const mongoose=require('mongoose')
 const userRoutes=require('./Routes/users')
+const authorRoutes=require('./Routes/authors')
 const app=express()
 var path = require ('path');
 const expressLayouts=require('express-ejs-layouts')
@@ -15,8 +16,10 @@ app.set('views','./views')
 app.set('layout','layouts/layout')
 app.use(expressLayouts)
 app.use(express.static('public'))
-app.use('/user',userRoutes)
+app.use('/',userRoutes)
+app.use('/author',authorRoutes)
 app.listen(process.env.PORT||3000)
+
 
 
 mongoose.connect(process.env.DATABASE_URL,()=>{
