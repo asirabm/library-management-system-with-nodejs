@@ -1,1 +1,18 @@
-Hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="#">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <h1>New Author</h1>
+     <form action="/author" method="POST">
+         <%- include('_form-fieds') %> 
+         <a href="/author/all">Cancel</a>
+         <button type="submit">Create</button>
+     </form>
+</body>
+</html>
