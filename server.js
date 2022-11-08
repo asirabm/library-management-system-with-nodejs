@@ -25,7 +25,7 @@ app.listen(process.env.PORT||3000)
 
 
 
-mongoose.connect(process.env.DATABASE_URL,()=>{
+mongoose.createConnection(process.env.DATABASE_URL,()=>{
  console.log('conected')
 },(err)=>{
  console.log('Hello')
