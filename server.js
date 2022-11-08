@@ -23,9 +23,9 @@ app.use(bodyParser.urlencoded({limit:'10mb',extended:false}))
 app.use('/author',authorRoutes)
 app.listen(process.env.PORT||3000)
 
-
-
-mongoose.createConnection(process.env.DATABASE_URL,()=>{
+db_url='mongodb+srv://Asir:QFuI32ybPWMnXdXk@cluster0.h60upyz.mongodb.net/?retryWrites=true&w=majority';
+//process.env.DATABASE_URL
+mongoose.connect(db_url,()=>{
  console.log('conected')
 },(err)=>{
  console.log('Hello')
