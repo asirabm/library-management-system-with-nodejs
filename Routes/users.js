@@ -11,7 +11,7 @@ router.get('/new',(req,res)=>{
 
 
 router.get('/',(req,res)=>{
-    res.render('index')
+    res.render('main')
 })
 
 //always put dynamic routs below
