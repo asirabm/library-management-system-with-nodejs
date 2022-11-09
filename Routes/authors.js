@@ -20,7 +20,7 @@ if(req.query.name!=null && req.query.name!==''){
         })
     }
     catch(e){
-         res.redirect('/')
+         res.redirect('/all')
     }
 
     //res.render('author/index')
@@ -38,13 +38,13 @@ router.get('/new',(req,res)=>{
 
 
 
-router.post('/',async(req,res)=>{
+router.post('/all',async(req,res)=>{
     const author=new Author({
         name:req.body.name
     })
     try{
         const saved=await author.save()
-        res.redirect('author/all')
+        res.redirect('/author/all')
     }
     catch(err){
        res.render("author/new",{
