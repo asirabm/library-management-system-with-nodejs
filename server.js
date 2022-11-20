@@ -7,6 +7,8 @@ const express=require('express')
 const mongoose=require('mongoose')
 const userRoutes=require('./Routes/users')
 const authorRoutes=require('./Routes/authors')
+const bookRoutes=require('./Routes/books')
+
 const bodyParser=require('body-parser')
 const app=express()
 var path = require ('path');
@@ -21,11 +23,12 @@ app.use('/',userRoutes)
 app.use(bodyParser.urlencoded({limit:'10mb',extended:false}))
 
 app.use('/author',authorRoutes)
-app.listen(process.env.PORT||3000)
+app.use('/book',bookRoutes)
+app.listen(process.env.PORT||3002)
 
-db_url='mongodb+srv://Asir:QFuI32ybPWMnXdXk@cluster0.h60upyz.mongodb.net/?retryWrites=true&w=majority';
+//db_url='mongodb+srv://Asir:QFuI32ybPWMnXdXk@cluster0.h60upyz.mongodb.net/?retryWrites=true&w=majority';
 //process.env.DATABASE_URL
-mongoose.connect(db_url,()=>{
+mongoose.connect(process.env.DATABASE_URL,()=>{
  console.log('conected')
 },(err)=>{
  console.log('Hello')

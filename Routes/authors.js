@@ -7,7 +7,7 @@ router.get('/all',async(req,res)=>{
 let searchOptions={};
 if(req.query.name!=null && req.query.name!==''){
     searchOptions.name=new RegExp(req.query.name,'i')
-    console.log(searchOptions)
+   console.log(searchOptions)
 }
 
 
@@ -27,22 +27,18 @@ if(req.query.name!=null && req.query.name!==''){
 })
 
 
-
-
 //new Author
 router.get('/new',(req,res)=>{
     res.render('author/new',{Author:new Author()})
 })
 
-
-
-
-
 router.post('/all',async(req,res)=>{
     const author=new Author({
-        name:req.body.name
+        name:req.body.name,
+        filename:req.body.uploadfile
     })
     try{
+        console.log(req.body.uploadfile)
         const saved=await author.save()
         res.redirect('/author/all')
     }

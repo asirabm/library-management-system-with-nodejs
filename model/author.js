@@ -3,6 +3,9 @@ const authorSchema=mongoose.Schema({
 name:{
     type:String,
     required:true
+},
+filename:{
+    type:String,
 }
 })
 

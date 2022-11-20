@@ -1,6 +1,7 @@
 const express=require('express')
 //const { route } = require('express/lib/application')
 const router=express.Router()
+const Book=require('../model/book')
 /*
 router.get('/',(req,res)=>{
     res.send('All users')
@@ -10,8 +11,27 @@ router.get('/new',(req,res)=>{
 })
 
 
-router.get('/',(req,res)=>{
-    res.render('main')
+router.get('/',async(req,res)=>{
+    let books
+  try{
+
+    books= await Book.find().sort({
+        createAt:'desc'
+    }).limit(5).exec()
+    console.log(books)
+
+ 
+
+  }
+  catch(e){
+   console.log(e.message)
+  }
+  res.render('main',{
+    books:books
+})
+   
+
+
 })
 
 //always put dynamic routs below

@@ -8,11 +8,11 @@
     <title>Document</title>
 </head>
 <body>
-     <h1>New Author</h1>
-     <form action="/author/all" method="POST">
+     <h1>New Book</h1>
+     <form action="/book/all" method="POST" enctype="multipart/form-data">
          <%- include('_form-fieds') %> 
          
-         <a href="/author/all">Cancel</a>
+         <a href="/book/all">Cancel</a>
          <button type="submit">Create</button>
      </form>
 </body>

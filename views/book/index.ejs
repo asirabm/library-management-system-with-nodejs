@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="#">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>All Books</h2>
+   <form action="/book/all" method="GET">
+       <div>
+        <label for="n">Title</label>
+       <input type="text" name="title" value="<%= searchOptions.title %>" id="n">
+       </div>
+      
+       <div>
+        <label for="n1">Published After</label>
+       <input type="date" name="publishedAfter" value="<%= searchOptions.publishedAfter %>" id="n1">
+       </div>
+      
+       <div>
+        <label for="n2">Published Before</label>
+       <input type="date" name="publishedBefore" value="<%= searchOptions.publishedBefore %>" id="n2">
+       </div>
+       
+       <button type="Submit">Search</button>
+</form>
+<br>
+<% books.forEach(book=>{ %>
+    <div><img width="100px" height="150px" src="<%= book.coverImagePath %> "></div>
+
+ <% }) %>    
+</body>
+</html>

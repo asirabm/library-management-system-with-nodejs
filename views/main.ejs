@@ -8,6 +8,13 @@
     <title>Testing</title>
 </head>
 <body>
- <p>Asir</p>
+ <h2>Recently added</h2>
+ <div>
+    <% books.forEach(book=>{ %>
+        <div><img width="100px" height="150px" src="<%= book.coverImagePath %> "></div>
+    
+     <% }) %>    
+
+ </div>
 </body>
 </html>
