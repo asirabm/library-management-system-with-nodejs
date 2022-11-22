@@ -18,7 +18,7 @@ router.get('/',async(req,res)=>{
     books= await Book.find().sort({
         createAt:'desc'
     }).limit(5).exec()
-    console.log(books)
+    //console.log(books)
 
  
 
@@ -36,7 +36,7 @@ router.get('/',async(req,res)=>{
 
 //always put dynamic routs below
 router.get('/:id',(req,res)=>{
-    console.log(req.params.id)
+    //console.log(req.params.id)
     res.send(req.params.id)
 })
 

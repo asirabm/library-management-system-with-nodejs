@@ -2,23 +2,24 @@ const express=require('express')
 const router=express.Router()
 const Author=require('../model/author')
 const Book=require('../model/book')
-const multer=require('multer')
+//const multer=require('multer')
 const path=require('path')
 const fs=require('fs')
 const book1=[
   {title:"asir"},
   {title:"abm"}
 ]
-const uploadPath=path.join('public',Book.coverImageBasePath)
+//const uploadPath=path.join('public',Book.coverImageBasePath)
 const imageMimeTypes=['image/jpeg','image/png','image/gif']
-const upload=multer({
+
+/*const upload=multer({
   dest:uploadPath,
   fileFilter:(req,file,callback)=>{
     callback(null,imageMimeTypes.includes(file.mimetype))
 
   }
 
-})
+})*/
 
 //GEt All Authers
 router.get('/all',async(req,res)=>{
@@ -63,18 +64,22 @@ router.get('/new',async(req,res)=>{
 
 })
 
-router.post('/all',upload.single('cover'),async(req,res)=>{
-  console.log(req.body.publishedDate)
+router.post('/all'/*,upload.single('cover')*/,async(req,res)=>{
+  //console.log(JSON.parse(req.body.cover))
   const fileName=req.file!=null?req.file.filename:null
-  //console.log(fileName)
   const book=new Book({
     title:req.body.title,
     author:req.body.author.trim(),
     publishedDate:req.body.publishedDate,
     pageCount:req.body.pageCount,
-    coverImageName:fileName,
+    //coverImageName:fileName,
+    //coverImage:10101010101010,
+    //coverImageType:'jkcnjka',
     description:req.body.description
   })
+  //console.log(req.body.cover)
+  saveBookCover(book,req.body.cover)
+
 try{
   const newBook=await book.save()
   res.redirect('/book/all')
@@ -83,13 +88,25 @@ catch(e){
   if(fileName!=null){
     removeBookCover(filename)
   }
-
+  console.log(e)
   renderNewPage(res,book,e)
 }
 
     
       
 })
+
+function saveBookCover(book,coverEncoded){
+  if (coverEncoded ==null) return
+  const cover=JSON.parse(coverEncoded)
+  if(cover!=null && imageMimeTypes.includes(cover.type)){
+    book.coverImage=new Buffer.from(cover.data,'base64')
+    book.coverImageType=cover.type
+  }
+
+
+} 
+
 
 async function renderNewPage(res,book,hasError=false){
 
@@ -104,6 +121,7 @@ async function renderNewPage(res,book,hasError=false){
     res.render('book/new',params)
    }
    catch(e){
+    
      res.redirect('/book/all')
    }
 }

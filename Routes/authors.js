@@ -38,7 +38,7 @@ router.post('/all',async(req,res)=>{
         filename:req.body.uploadfile
     })
     try{
-        console.log(req.body.uploadfile)
+       // console.log(req.body.uploadfile)
         const saved=await author.save()
         res.redirect('/author/all')
     }
