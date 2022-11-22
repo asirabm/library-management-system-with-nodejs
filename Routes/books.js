@@ -126,11 +126,7 @@ async function renderNewPage(res,book,hasError=false){
    }
 }
 
-function removeBookCover(filename){
-  fs.unlink(path.join(uploadPath,filename),(err)=>{
-    if(err) console.error(err)
-  })
-}
+
 
 
 
