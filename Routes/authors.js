@@ -7,7 +7,7 @@ router.get('/all',async(req,res)=>{
 let searchOptions={};
 if(req.query.name!=null && req.query.name!==''){
     searchOptions.name=new RegExp(req.query.name,'i')
-   console.log(searchOptions)
+   //console.log(searchOptions)
 }
 
 
