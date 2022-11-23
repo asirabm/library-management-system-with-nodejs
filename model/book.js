@@ -41,7 +41,7 @@ author:{
 BookSchema.virtual('coverImagePath').get(function(){
    
     if(this.coverImage!=null && this.coverImageType!=null){
-        console.log(`data:${this.coverImageType};charset=utf-8;base64,${this.coverImage.toString('base64')}`)
+        //console.log(`data:${this.coverImageType};charset=utf-8;base64,${this.coverImage.toString('base64')}`)
         return `data:${this.coverImageType};charset=utf-8;base64,${this.coverImage.toString('base64')}`
        // console.log( path.join('/',coverImageBasePath,this.coverImageName))
       ///  return path.join('/',coverImageBasePath,this.coverImageName)

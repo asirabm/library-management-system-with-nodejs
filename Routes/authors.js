@@ -1,6 +1,7 @@
 const express=require('express')
 const router=express.Router()
 const Author=require('../model/author')
+const book=require('../model/book')
 
 
 
@@ -54,8 +55,23 @@ router.post('/all',async(req,res)=>{
       
 })
 
-router.get('/:id',(req,res)=>{
-    res.send(`Show Author ${req.params.id}`)
+router.get('/:id',async(req,res)=>{
+    console.log('helllllllllllllllllllllllllllllllll')
+    try{
+     const author=await Author.findById(req.params.id.trim())
+     const books=await book.find({author:author.id}).limit(6).exec()
+     res.render('author/show',{
+        author:author,
+        bookByAuthor:books
+     })
+    }
+    catch(e){
+        console.log(e.message)
+     res.redirect('/')
+    }
+    
+    
+    //res.send(`Show Author ${req.params.id}`)
 })
 
 router.get('/:id/edit',async(req,res)=>{
@@ -101,9 +117,11 @@ router.put('/:id',async(req,res)=>{
     //res.send(`Update Author ${req.params.id}`)
 })
 router.delete('/:id',async(req,res)=>{
+    let books
     let author;
     try{
     author =await Author.findById(req.params.id.trim())
+   
     
     //author.name=req.body.name
     await author.remove()
@@ -115,8 +133,22 @@ router.delete('/:id',async(req,res)=>{
             res.redirect('/')
         }
         else{
-       res.redirect(`/author/${author.id}`)
-       console.log(e)
+       //res.redirect(`/author/${author.id}`)
+
+        try{
+            books=await book.find({author:author.id}).limit(6).exec()
+        }
+        catch{
+
+        }
+
+       
+       res.render('author/show',{
+          author:author,
+          bookByAuthor:books,
+          errorMessage:e.message
+
+       })
         }
 
     }
