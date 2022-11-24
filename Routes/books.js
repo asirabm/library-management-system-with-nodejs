@@ -107,6 +107,18 @@ function saveBookCover(book,coverEncoded){
 
 } 
 
+router.get('/:id',async(req,res)=>{
+  try{
+    const book=await Book.findById(req.params.id).populate('author').exec()
+    res.render('book/show',{
+      book:book
+    })
+  }
+  catch(e){
+
+  }
+})
+
 
 async function renderNewPage(res,book,hasError=false){
 
@@ -125,6 +137,28 @@ async function renderNewPage(res,book,hasError=false){
      res.redirect('/book/all')
    }
 }
+
+router.delete('/:id',async(req,res)=>{
+  let book;
+  try{
+     book=await Book.findById(req.params.id)
+     await book.remove()
+     res.redirect('/book/all')
+  }
+  catch(e){
+    if(book!=null){
+     res.render('book/show',{
+      book:book,
+      errorMessage:'Could not remove book'
+     })
+    }
+    else{
+    res.redirect('/')
+    }
+
+  }
+})
+
 
 
 

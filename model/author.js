@@ -14,12 +14,12 @@ filename:{
 
 authorSchema.pre('remove',function(next){
     book.find({author:this.id},(err,books)=>{
-        console.log(books.length)
+        //console.log(books.length)
         if(err){
             next(err)
         }
         else if(books.length>0){
-            console.log('This author has book still')
+           // console.log('This author has book still')
             next(new Error('This Author has book still'))
         }
         else{
