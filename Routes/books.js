@@ -203,7 +203,7 @@ let book
 try{
   book=await Book.findById(req.params.id.trim())
   book.title=req.body.title
-  book.author=req.body.author
+  book.author=req.body.author.trim()
   book.publishedDate=new Date(req.body.publishedDate)
   book.description=req.body.description
   if(req.body.cover!=null && req.body.cover){
