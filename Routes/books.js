@@ -82,7 +82,7 @@ router.post('/all'/*,upload.single('cover')*/,async(req,res)=>{
 
 try{
   const newBook=await book.save()
-  res.redirect('/book/all')
+  res.redirect(`/book/${newBook.id}`)
 }
 catch(e){
   if(fileName!=null){
@@ -121,22 +121,47 @@ router.get('/:id',async(req,res)=>{
 
 
 async function renderNewPage(res,book,hasError=false){
+  renderFormPage(res,book,'new',hasError)
 
+}
+async function renderEditPage(res,book,hasError=false){
+  renderFormPage(res,book,'edit',hasError)
+}
+
+
+async function renderFormPage(res,book,form,hasError=false){
   try{
     const authors=await Author.find({})
-
+   console.log(book.publishedDate)
+   console.log(book.pageCount)
     const params={
       authors:authors,
       book:book
     }
-    if(hasError) params.errorMessage="Error creating book"
-    res.render('book/new',params)
+    if(hasError){
+      if(form=='edit'){
+        params.errorMessage="Error updating book"
+      }
+      else{
+        params.errorMessage="Error creating book"
+      }
+    } 
+    
+    
+    res.render(`book/${form}`,params)
    }
    catch(e){
     
      res.redirect('/book/all')
    }
+
 }
+
+
+
+
+
+
 
 router.delete('/:id',async(req,res)=>{
   let book;
@@ -160,8 +185,47 @@ router.delete('/:id',async(req,res)=>{
 })
 
 
+router.get('/:id/edit',async(req,res)=>{
+  let book;
+  try{
+  book=await Book.findById(req.params.id)
+  //console.log(book)
+  }
+  catch(e){
 
+  }
+  renderEditPage(res,book)
 
+})
+
+router.put('/:id',async(req,res)=>{
+let book
+try{
+  book=await Book.findById(req.params.id.trim())
+  book.title=req.body.title
+  book.author=req.body.author
+  book.publishedDate=new Date(req.body.publishedDate)
+  book.description=req.body.description
+  if(req.body.cover!=null && req.body.cover){
+    saveBookCover(book,req.body.cover)
+  }
+  await book.save()
+  res.redirect(`/book/${book.id}`)
+}
+catch(e){
+  if(book!=null){
+    console.log(e)
+    renderEditPage(res,book,true)
+  }
+  else{
+    redirect('/')
+  }
+ 
+}
+
+    
+      
+})
 
 
 
