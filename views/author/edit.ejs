@@ -9,12 +9,12 @@
    
 </head>
 <body>
-     <h1>Edit Author</h1>
+     <h1 class="page-header">Edit Author</h1>
      <form action="/author/<%= author.id %> ?_method=PUT" method="POST">
          <%- include('_form-fieds') %> 
          
          <a href="/author/<%= author.id %> ">Cancel</a>
-         <button type="submit">Update</button>
+         <button class="btn btn-primary" type="submit">Update</button>
      </form>
 </body>
 </html>

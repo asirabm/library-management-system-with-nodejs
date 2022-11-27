@@ -32,3 +32,6 @@ margin-bottom: 5rem;
     font-weight: var(--nav-link-font-weight);
     padding: 1rem;
 }
+.header-nav li a:hover,.header-title:hover{
+    color: white;
+}

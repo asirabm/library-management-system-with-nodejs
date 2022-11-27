@@ -1,6 +1,7 @@
 @import './shared/font.css';
 @import './shared/variables.css';
-@import 'header.css';
+@import './shared/header.css';
+@import './shared/button.css';
 
 
  :root{
@@ -23,4 +24,8 @@
 }
 .inner-container{
    margin: 0 2rem;
+}
+.page-header{
+   font-size: 2rem;
+   font-weight: 500;
 }

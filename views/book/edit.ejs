@@ -8,12 +8,12 @@
     <title>Document</title>
 </head>
 <body>
-     <h1>Edit Book</h1>
+     <h1 class="page-header">Edit Book</h1>
      <form action="/book/<%= book.id %>?_method=PUT " method="POST" >
          <%- include('_form-fieds') %> 
          
-         <a href="/book/all">Cancel</a>
-         <button type="submit">Update</button>
+         <a class="btn btn-primary" href="/book/all">Cancel</a>
+         <button class="btn btn-primary" type="submit">Update</button>
      </form>
 </body>
 </html>
