@@ -1,0 +1,11 @@
+@import './shared/font.css';
+@import './shared/variables.css';
+
+
+ :root{
+    font-family: 'Gotham Rounded';
+    font-size: 20px ;
+ }
+ body{
+    background: linear-gradient(to right,var(--color-background-dark),var(--color-background-light));
+ }
