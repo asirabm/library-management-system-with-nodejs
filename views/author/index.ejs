@@ -10,9 +10,15 @@
 <body>
     <h2 class="page-header">All Authors</h2>
    <form action="/author/all" method="GET">
-       <label for="n">Name</label>
-       <input type="text" name="name" value="<%= searchOptions.name %>" id="n">
-       <button class="btn btn-primary" type="Submit">Search</button>
+        <div class="form-row">
+            <div class="form-item">
+                <label for="n">Name</label>
+                <input type="text" name="name" value="<%= searchOptions.name %>" id="n">
+            </div>
+        </div>
+       <div class="form-row form-row-end">
+        <button class="btn btn-primary" type="Submit">Search</button>
+       </div>
 </form>
 <br>
 <% authors.forEach(author=>{ %>

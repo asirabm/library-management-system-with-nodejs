@@ -9,14 +9,12 @@
 <body>
   
    
-   <div>
+ <div class="form-row">
+  <div class="form-item">
     <label for="n" >Title</label>
     <input id="n" type="text" name="title" value="<%= book.title %> "> 
    </div>
-
-  <div>
-   
-   
+  <div class="form-item">
     <label for="n1" >Author</label>
     <select id="n1" name="author">
       <% authors.forEach( author=>{%> 
@@ -32,15 +30,20 @@
   </div>
 
 
-  <div>
-    <label for="n2" >Published Date</label>
+
+ </div>
+
+
+<div class="form-row">
+  <div class="form-item">
+    <label for="n2" >Publish Date</label>
    <input id="n2" type="date" name="publishedDate" 
    
    value="<%= book.publishedDate == null ? '': book.publishedDate.toISOString().split('T')[0] %>"> 
   
   </div>
    
-  <div>
+  <div class="form-item">
     <label for="n3" >Page Count</label>
    <input id="n3" type="number" name="pageCount" 
    
@@ -48,17 +51,23 @@
   
   </div>
 
-  <div>
+
+
+</div>
+
+ <div class="form-row">
+  <div class="form-item form-item-no-grow">
     <label for="n4" >Cover</label>
    <input id="n4" type="file" name="cover" class="filepond">
   
   </div>
 
-  <div>
+  <div class="form-item ">
     <label for="n5" >Description</label>
   <textarea id="n5" name="description"><%= book.description %> </textarea>
   
   </div>
+ </div>
 
 
 
