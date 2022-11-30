@@ -10,16 +10,18 @@
     display: flex;
     margin-bottom: .5rem;
     flex-wrap: wrap;
+    
    
 }
 .form-item{
     display: flex;
     flex-direction: column;
-    margin-left: 2rem;
+    
     flex-grow: 1;
     flex-basis: 0;
     flex-wrap:wrap;
     -ms-flex-align: center;
+   
     
 }
 .form-item-no-grow{
@@ -27,6 +29,7 @@
 }
 .form-item:first-child{
     /*margin-left: 0;*/
+   margin-right: 0.5rem;
 }
 .form-item > label{
     font-size: var(--form-label-font-size);

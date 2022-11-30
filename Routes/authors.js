@@ -49,7 +49,7 @@ router.post('/all',async(req,res)=>{
     catch(err){
        res.render("author/new",{
            author:author,
-           errorMessage:err
+           errorMessage:"Error creating author"
        })
     }
       
