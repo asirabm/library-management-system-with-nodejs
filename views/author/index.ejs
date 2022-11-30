@@ -22,12 +22,15 @@
 </form>
 <br>
 <% authors.forEach(author=>{ %>
-    <div><%=author.name %> </div> 
-    <div class="btn-row">
-    <a class="btn btn-primary" href="/author/<%= author.id %> ">View</a>
-    <a class="btn btn-primary" href="/author/<%= author.id %>/edit">Edit</a>
-    <%- include('../partial/_deleteForm',{url:`/author/${author.id}`}) %> 
-    </div>
+ <div class="author-row">
+        <div class="author-name"><%=author.name %> </div> 
+      
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/author/<%= author.id %> ">View</a>
+        <a class="btn btn-primary" href="/author/<%= author.id %>/edit">Edit</a>
+        <%- include('../partial/_deleteForm',{url:`/author/${author.id}`}) %> 
+      </div>
+ </div>
 
  <% }) %>    
 </body>

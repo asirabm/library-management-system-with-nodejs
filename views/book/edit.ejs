@@ -12,8 +12,10 @@
      <form action="/book/<%= book.id %>?_method=PUT " method="POST" >
          <%- include('_form-fieds') %> 
          
-         <a class="btn btn-primary" href="/book/all">Cancel</a>
+         <div class="form-row btn-row form-row-end">
+         <a class="btn btn-danger" href="/book/all">Cancel</a>
          <button class="btn btn-primary" type="submit">Update</button>
+         </div>
      </form>
 </body>
 </html>
