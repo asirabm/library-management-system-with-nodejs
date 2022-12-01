@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({limit:'10mb',extended:false}))
 
 app.use('/author',authorRoutes)
 app.use('/book',bookRoutes)
-app.listen(process.env.PORT||3002)
+app.listen(process.env.PORT||3000)
 
 //db_url='mongodb+srv://Asir:QFuI32ybPWMnXdXk@cluster0.h60upyz.mongodb.net/?retryWrites=true&w=majority';
 //process.env.DATABASE_URL

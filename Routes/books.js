@@ -28,15 +28,15 @@ router.get('/all',async(req,res)=>{
 
   //let searchOptions={};
   if(req.query.title!=null && req.query.title!==''){
-    quety=query.regex('title',new RegExp(req.query.title,'i'))
+    query=query.regex('title',new RegExp(req.query.title,'i'))
     }
 
     if(req.query.publishedAfter!=null && req.query.publishedAfter!==''){
-      quety=query.gte('publishedDate',req.query.publishedAfter)
+      query=query.gte('publishedDate',req.query.publishedAfter)
       }
 
       if(req.query.publishedBefore!=null && req.query.publishedBefore!==''){
-        quety=query.lte('publishedDate',req.query.publishedBefore)
+        query=query.lte('publishedDate',req.query.publishedBefore)
         }
 
 
@@ -86,9 +86,9 @@ try{
 }
 catch(e){
   if(fileName!=null){
-    removeBookCover(filename)
+    //removeBookCover(fileName)
   }
-  console.log(e)
+ // console.log(e)
   renderNewPage(res,book,e)
 }
 
@@ -132,8 +132,8 @@ async function renderEditPage(res,book,hasError=false){
 async function renderFormPage(res,book,form,hasError=false){
   try{
     const authors=await Author.find({})
-   console.log(book.publishedDate)
-   console.log(book.pageCount)
+   //console.log(book.publishedDate)
+   //console.log(book.pageCount)
     const params={
       authors:authors,
       book:book
@@ -214,7 +214,7 @@ try{
 }
 catch(e){
   if(book!=null){
-    console.log(e)
+   // console.log(e)
     renderEditPage(res,book,true)
   }
   else{
