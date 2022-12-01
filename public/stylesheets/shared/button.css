@@ -46,4 +46,6 @@
 .btn-row > *:first-child {
     margin-left: 0rem;
 }
-
+.author-btn-row{
+   /* margin-left: 2rem;*/
+}

@@ -25,7 +25,7 @@
  <div class="author-row">
         <div class="author-name"><%=author.name %> </div> 
       
-      <div class="btn-row">
+      <div class="btn-row author-btn-row">
         <a class="btn btn-primary" href="/author/<%= author.id %> ">View</a>
         <a class="btn btn-primary" href="/author/<%= author.id %>/edit">Edit</a>
         <%- include('../partial/_deleteForm',{url:`/author/${author.id}`}) %> 
