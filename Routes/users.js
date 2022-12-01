@@ -13,6 +13,7 @@ router.get('/new',(req,res)=>{
 
 router.get('/',async(req,res)=>{
     let books
+   // console.log(window)
   try{
 
     books= await Book.find().sort({

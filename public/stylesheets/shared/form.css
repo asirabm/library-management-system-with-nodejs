@@ -60,7 +60,7 @@
  }
  
  .form-item textarea{
-    height: 50%;
+    height: auto;
     resize: none;
  }
 
