@@ -87,8 +87,9 @@ try{
 catch(e){
   if(fileName!=null){
     //removeBookCover(fileName)
+    
   }
- // console.log(e)
+ //console.log(e)
   renderNewPage(res,book,e)
 }
 
@@ -97,7 +98,7 @@ catch(e){
 })
 
 function saveBookCover(book,coverEncoded){
-  if (coverEncoded !=null) return
+  if (coverEncoded ==null) return
   const cover=JSON.parse(coverEncoded)
   if(cover!=null && imageMimeTypes.includes(cover.type)){
     book.coverImage=new Buffer.from(cover.data,'base64')
